@@ -1,0 +1,17 @@
+:docinfo:
+= groovyfo
+Documentation
+:nofooter:
+
+This document describes the groovyfo app.
+
+include::subpage.adoc[]
+
+include::additionalpage.adoc[]
+
+== About
+
+groovyfo +
+(C) Your Company
+
+https://your-website.com/

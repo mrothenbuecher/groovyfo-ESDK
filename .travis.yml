@@ -1,0 +1,38 @@
+#
+# You can use Travis CI https://travis-ci.org for automatic builds of you ESDK App project on Github.
+# TODO: Activate Travis CI for your Github repository
+#
+language: java
+dist: trusty
+
+services:
+  - docker
+
+env:
+  - DOCKER_COMPOSE_VERSION=1.23.2
+
+jdk:
+  - oraclejdk8
+
+# TODO: In the Travis UI for your repository register your credentials for https://registry.abas.sh in Settings > Environment Variables as REGISTRY_USER and REGISTRY_PASSWORD
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - docker login sdp.registry.abas.sh -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+  - travis_wait docker-compose up -d
+  - sleep 45
+  - chmod a+x initGradleProperties.sh
+  - chmod a+x gradlew
+  - ./initGradleProperties.sh
+
+install:
+  - ./gradlew checkPreconditions fullInstall
+
+script:
+  - ./gradlew instrumentJfopServer verify codeCoverageVerification
+
+after_script:
+  - docker-compose stop || true
+  - docker-compose rm -f || true

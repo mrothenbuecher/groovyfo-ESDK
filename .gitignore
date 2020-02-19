@@ -1,0 +1,15 @@
+# Gradle specific files
+.gradle/
+gradle.properties
+
+# Build artifact folders
+build/
+out/
+bin/
+
+# IDE specific files
+.idea/
+*.iml
+.project
+.classpath
+.settings/
