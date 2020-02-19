@@ -39,11 +39,11 @@ Die Klasse de.finetech.groovy.ScriptExecutor ist ein JFOP welches als ersten Par
 ## Verwendung
 Aufruf eines GroovyFO aus der Kommandoübersicht
 ```
-<Text>GroovyFO.java GROOVYSCRIPT_WELCHES_AUSGEFÜHRT_WERDEN_SOLL<zeigen>
+<Text>java:GroovyFO@grvfo GROOVYSCRIPT_WELCHES_AUSGEFÜHRT_WERDEN_SOLL<zeigen>
 ```
 oder in einem Infosystemen hinterlegen
 ```
-GroovyFO.java GROOVYSCRIPT_WELCHES_AUSGEFÜHRT_WERDEN_SOLL
+java:GroovyFO@grvfo GROOVYSCRIPT_WELCHES_AUSGEFÜHRT_WERDEN_SOLL
 ```
 
 ## Beispiel GroovyFO
@@ -63,7 +63,7 @@ for(def i=0; i<100 && hole("Teil"); i++){
 ```
 Zum testen Kommando aufrufen mit
 ```
-<Text>GroovyFO.java ow1/GROOVYFO.TEST<zeigen>
+<Text>java:GroovyFO@grvfo ow1/GROOVYFO.TEST<zeigen>
 ```
 
 #### Kurzübersicht
