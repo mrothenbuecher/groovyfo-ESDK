@@ -1,5 +1,7 @@
 Status:**beta**
 
+ESDK App basierend auf [GroovyFO](https://github.com/mrothenbuecher/GroovyFO)
+
 GroovyFO
 ===
 
@@ -32,14 +34,6 @@ einige Vorteile:<br>
 ## Funktionsweise
 
 Die Klasse de.finetech.groovy.ScriptExecutor ist ein JFOP welches als ersten Parameter eine Textdatei (Groovyscript) erwartet. Dieses wird dann auf Basis der Script-Klasse de.finetech.groovy.AbasBaseScript initialisiert. Diese Klasse kapselt JFOP-Funktionen um so Schreibarbeit sparen zu können. Weiterhin besteht durch die Verwendung von Groovy die Möglichkeit Kontrollstrukturen wie if-Anweisungen, Schleifen oder eben auch Klassen im Kontext eines FOP zu verwenden. Dadurch das bei jeden Aufruf des ScriptExecuters die Groovy Datei neu interpretiert wird, können Änderungen an dieser Datei ohne erneutes redeployen des JFOP-Server wirksam werden. Dieses Verhalten ist ähnlich dem Verhalten von FOP's.
-
-
-## Installation
-
-### via Quelltext
-Das Projekt von github herunterladen und entpacken. Den Inhalt src Ordners bei den eigenen JFOP einfügen (abas Tools).
-
-JFOP Server redeployen und wie in der Beispiel Sektion beschrieben testen.
 
 
 ## Verwendung
