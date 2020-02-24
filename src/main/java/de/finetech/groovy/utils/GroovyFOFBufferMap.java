@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-import de.finetech.groovy.AbasBaseScript;
 import de.finetech.groovy.utils.datatypes.FOFunction;
 import groovy.lang.GroovyObject;
 import groovy.lang.GroovyObjectSupport;
@@ -20,13 +19,13 @@ public class GroovyFOFBufferMap extends GroovyObjectSupport
 
 	private static final long serialVersionUID = 4338579360691818296L;
 
-	protected AbasBaseScript script;
+	protected GroovyFOScript script;
 
 	@Override
 	public void clear() {
 	}
 
-	public GroovyFOFBufferMap(AbasBaseScript script) {
+	public GroovyFOFBufferMap(GroovyFOScript script) {
 		this.script = script;
 	}
 

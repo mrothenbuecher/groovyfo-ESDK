@@ -1,6 +1,5 @@
 import de.abas.eks.jfop.FOPException;
 import de.abas.eks.jfop.remote.ContextRunnable;
-import de.abas.eks.jfop.remote.FO;
 import de.abas.eks.jfop.remote.FOPSessionContext;
 import de.finetech.groovy.ScriptExecutor;
 

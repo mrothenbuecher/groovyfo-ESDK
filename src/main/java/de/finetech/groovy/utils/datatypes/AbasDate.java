@@ -5,8 +5,9 @@ import java.util.regex.Pattern;
 
 import de.abas.eks.jfop.FOPException;
 import de.abas.eks.jfop.remote.EKS;
-import de.finetech.groovy.AbasBaseScript;
+import de.abas.jfop.base.buffer.ReadableBuffer;
 import de.finetech.groovy.utils.GroovyFOException;
+import de.finetech.groovy.utils.GroovyFOScript;
 import de.finetech.groovy.utils.GroovyFOVariable;
 
 /**
@@ -16,7 +17,7 @@ import de.finetech.groovy.utils.GroovyFOVariable;
  */
 public class AbasDate extends GroovyFOVariable<String> {
 
-	private AbasBaseScript script;
+	private GroovyFOScript script;
 
 	private static Pattern pattern = Pattern
 			.compile("(GD.*)|" + "(GW.*)|" + "(Z)|" + "(J2)|(GJ)|" + "(GP.*)|" + "(DATUM)|(WOCHE)|(TERMIN)|(ZEIT)");
@@ -37,7 +38,7 @@ public class AbasDate extends GroovyFOVariable<String> {
 	 * @throws GroovyFOException
 	 * @throws ParseException
 	 */
-	public AbasDate(String expr, String value, AbasBaseScript script) throws GroovyFOException, ParseException {
+	public AbasDate(String expr, String value,GroovyFOScript script) throws GroovyFOException, ParseException {
 		super(expr, script);
 		this.script = script;
 		this.type = EKS.getValue("F", "typeof(F|expr(" + expr + "))");

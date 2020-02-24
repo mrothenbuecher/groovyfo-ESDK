@@ -2,8 +2,8 @@ package de.finetech.groovy.utils.datatypes;
 
 import java.text.ParseException;
 
-import de.finetech.groovy.AbasBaseScript;
 import de.finetech.groovy.utils.GroovyFOException;
+import de.finetech.groovy.utils.GroovyFOScript;
 
 /**
  * 
@@ -16,9 +16,9 @@ import de.finetech.groovy.utils.GroovyFOException;
 public class FOFunction {
 
 	protected String functionName;
-	protected AbasBaseScript script;
+	protected GroovyFOScript script;
 
-	public FOFunction(String functionName, AbasBaseScript script) {
+	public FOFunction(String functionName, GroovyFOScript script) {
 		this.functionName = functionName;
 		this.script = script;
 	}

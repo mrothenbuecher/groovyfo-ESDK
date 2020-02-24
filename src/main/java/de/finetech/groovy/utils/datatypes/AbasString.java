@@ -13,7 +13,7 @@ public class AbasString extends GroovyFOVariable<String> {
 
 	// TODO Abas funktionen wie "asd"<<2 usw.
 
-	public AbasString(String varname, AbasBaseScript script) {
+	public AbasString(String varname,AbasBaseScript script) {
 		super(varname, script);
 	}
 

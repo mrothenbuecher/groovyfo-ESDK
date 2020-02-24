@@ -8,7 +8,6 @@ import java.util.Set;
 
 import de.abas.eks.jfop.FOPException;
 import de.abas.jfop.base.buffer.BaseReadableBuffer;
-import de.finetech.groovy.AbasBaseScript;
 import groovy.lang.GroovyObject;
 import groovy.lang.GroovyObjectSupport;
 
@@ -23,14 +22,14 @@ public class GroovyFOBaseReadableMap<T extends BaseReadableBuffer> extends Groov
 
 	private static final long serialVersionUID = 4146145334512673667L;
 	// private String buffer = null;
-	protected AbasBaseScript script;
+	protected GroovyFOScript script;
 	protected T buffer;
 
 	@Override
 	public void clear() {
 	}
 
-	public GroovyFOBaseReadableMap(T buffer, AbasBaseScript script) {
+	public GroovyFOBaseReadableMap(T buffer, GroovyFOScript script) {
 		this.script = script;
 		this.buffer = buffer;
 	}

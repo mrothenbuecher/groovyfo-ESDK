@@ -1,10 +1,10 @@
 package de.finetech.groovy.utils;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 
 import de.abas.eks.jfop.FOPException;
 import de.abas.jfop.base.buffer.WriteableBuffer;
-import de.finetech.groovy.AbasBaseScript;
 
 /**
  * 
@@ -19,22 +19,31 @@ public class GroovyFOWriteableMap<T extends WriteableBuffer> extends GroovyFORea
 	 */
 	private static final long serialVersionUID = 2863196830703951276L;
 
-	public GroovyFOWriteableMap(T buffer, AbasBaseScript script) {
+	public GroovyFOWriteableMap(T buffer, GroovyFOScript script) {
 		super(buffer, script);
 	}
 
 	@Override
 	public Object put(String key, Object value) {
 		try {
-			// FO.println("key: "+key+" -> "+value.toString());
 			Class<?> valueClass = value.getClass();
 			// FIXME muss besser gehen
 			if (valueClass == Integer.class) {
 				buffer.setValue(key, (Integer) value);
 				return value;
 				//return script.fo(key, (Integer) value);
-			} else if (valueClass == Double.class) {
-				buffer.setValue(key, (Double) value);
+			} else if (valueClass == Double.class || valueClass == Float.class || valueClass == BigDecimal.class) {
+				double val = 0.0;
+				if(valueClass == BigDecimal.class) {
+					val = ((BigDecimal) value).doubleValue();
+				}
+				else if(valueClass == Double.class) {
+					val = ((Double) value).doubleValue();
+				}
+				else if(valueClass == Float.class) {
+					val = ((Float) value).doubleValue();
+				}
+				buffer.setValue(key, val);
 				return value;
 				//return script.fo(key, (Double) value);
 			} else if (valueClass == Boolean.class) {

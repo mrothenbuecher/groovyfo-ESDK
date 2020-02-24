@@ -4,7 +4,6 @@ import java.text.ParseException;
 
 import de.abas.eks.jfop.FOPException;
 import de.abas.jfop.base.buffer.ReadableBuffer;
-import de.finetech.groovy.AbasBaseScript;
 import de.finetech.groovy.utils.datatypes.TypGuesser.PossibleDatatypes;
 
 /**
@@ -17,7 +16,7 @@ public class GroovyFOReadableMap<T extends ReadableBuffer> extends GroovyFOBaseR
 
 	private static final long serialVersionUID = 9140667579366484095L;
 
-	public GroovyFOReadableMap(T buffer, AbasBaseScript script) {
+	public GroovyFOReadableMap(T buffer, GroovyFOScript script) {
 		super(buffer, script);
 	}
 
@@ -29,11 +28,13 @@ public class GroovyFOReadableMap<T extends ReadableBuffer> extends GroovyFOBaseR
 			switch (abasType) {
 			case INTEGER:
 				return buffer.getIntegerValue(skey);
+				//return new AbasInteger(buffer.getQualifiedFieldName(skey),script);
 			case DOUBLE:
 			case DOUBLEDT:
 			case DOUBLET:
 			case DOUBLED:
 				return buffer.getDoubleValue(skey);
+				//return new AbasDouble(buffer.getQualifiedFieldName(skey),script);
 			case BOOLEAN:
 				return buffer.getBooleanValue(skey);
 			default:

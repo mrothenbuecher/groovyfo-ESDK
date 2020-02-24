@@ -1,8 +1,6 @@
 package de.finetech.groovy.utils;
 
-import de.abas.eks.jfop.FOPException;
 import de.abas.eks.jfop.remote.EKS;
-import de.finetech.groovy.AbasBaseScript;
 import groovy.lang.GroovyObjectSupport;
 
 /**
@@ -10,28 +8,42 @@ import groovy.lang.GroovyObjectSupport;
  * @author Michael Rothenbücher, Finetech GmbH & Co. KG
  *
  *         bei der Implementierung von Comparable ist auf die Kompatiblitüt der
- *         abas Typen unter einander zu achten!
+ *         abas Typen untereinander zu achten!
  * @param <V>
  */
 
 public abstract class GroovyFOVariable<V> extends GroovyObjectSupport implements Comparable<Object> {
 
 	protected String varname, type;
-	protected AbasBaseScript script;
+	protected GroovyFOScript script;
 
 	/**
 	 * 
 	 * @param varname U|von M|von H|von ...
 	 * @param script
 	 */
-	public GroovyFOVariable(String varname, AbasBaseScript script) {
-		// String[] foo = varname.split(AbasBaseScript.PIPE_PATTERN);
-		// this.buffer = foo[0];
+	public GroovyFOVariable(String varname, GroovyFOScript script) {
 		this.varname = varname;
+		this.script = script;
+	}
+	
+	/**
+	 * 
+	 * @param varname U|von M|von H|von ...
+	 * @param type Abas Datentyp I3 B GL20 ...
+	 * @param script
+	 */
+	public GroovyFOVariable(String varname,String type, GroovyFOScript script) {
+		this.varname = varname;
+		this.type = type;
 		this.script = script;
 	}
 
 	public abstract V getValue();
+	
+	public V call() {
+		return this.getValue();
+	}
 
 	public String getType() {
 		if (type == null) {
@@ -40,9 +52,11 @@ public abstract class GroovyFOVariable<V> extends GroovyObjectSupport implements
 		return type;
 	}
 
+	/*
 	public String plus(Object i) throws FOPException, GroovyFOException {
 		return this.getValue().toString().concat(i.toString());
 	}
+	*/
 
 	public String getVariablename() {
 		return this.varname;
@@ -54,6 +68,22 @@ public abstract class GroovyFOVariable<V> extends GroovyObjectSupport implements
 
 	// TODO Metafunktionen
 
+	/*
+	 * defined
+	 * typeof
+	 * empty
+	 * modifiable
+	 * visible
+	 * protected
+	 * hidden
+	 * modified
+	 * oldvalue
+	 * value
+	 * tostring
+	 * tovalue
+	 * 
+	 */
+	
 	public boolean isEmpty() {
 		String empty = EKS.getValue("F", "empty(" + this.getVariablename() + ")");
 		// TODO lang
