@@ -1,0 +1,57 @@
+/**
+*  ow1/GROOVYFO.UNITTEST
+*/
+// int prüfen
+art("int","xi","xj")
+u.xi = 1
+u.xj = 1
+assert u.xi == u.xj && u.xi == 1
+u.xi++
+assert u.xi > u.xj
+u.xi--
+assert u.xi == u.xj
+u.xi = u.xi+u.xj
+assert u.xi == 2
+
+// double prüfen
+art("real","xri","xrj")
+u.xri = 1.0
+u.xrj = 1.0
+assert u.xri == u.xrj && u.xri == 1.0
+u.xri += 1.0
+assert u.xri > u.xrj
+u.xri -= 1.0
+assert u.xri == u.xrj
+u.xri = u.xri + u.xrj
+assert u.xri == 2.0
+
+// text prüfen
+art("TEXT","xt1","xt2")
+u.xt1 = "Geht"
+u.xt2 = "Geht nicht"
+assert u.xt1 == "Geht"
+assert u.xt1 != u.xt2
+u.xt1 += " nicht"
+assert u.xt1 == u.xt2
+
+// Datum prüfen
+art("GD","xvon","xbis")
+u.xvon = "."
+u.xbis = "."
+assert u.xvon == u.xbis
+assert (u.xvon - u.xbis) == 0
+u.xbis++
+assert u.xvon < u.xbis
+u.xvon = u.xvon + 2
+assert u.xvon > u.xbis
+
+// verweise prüfen
+hole("Teil","\$,,@gruppe=1;")
+if(mehr){
+        assert h.zuplatz != null
+        assert (h.zuplatz^"id") != null
+        assert (h.zuplatz^id) != null
+        assert (h.zuplatz^"id") == (h.zuplatz^id)
+}
+
+println "Alle Tests erfolgreich bestanden"

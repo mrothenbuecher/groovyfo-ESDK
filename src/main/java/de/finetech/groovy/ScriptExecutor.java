@@ -24,6 +24,7 @@ import de.abas.eks.jfop.remote.ContextRunnable;
 import de.abas.eks.jfop.remote.EKS;
 import de.abas.eks.jfop.remote.FO;
 import de.abas.eks.jfop.remote.FOPSessionContext;
+import de.abas.erp.db.DbContext;
 import groovy.lang.Binding;
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyShell;
@@ -44,19 +45,18 @@ public class ScriptExecutor implements ContextRunnable {
 		return new String(encoded, encoding);
 	}
 
-	
 	public static String[] findPackageNamesStartingWith(String prefix) {
 		Package[] packages = Package.getPackages();
 		List<String> list = new ArrayList<String>();
-		for(Package pack:packages) {
-			if(pack.getName().startsWith(prefix)) {
-				//System.out.println("DEBUG: "+pack.getName());
+		for (Package pack : packages) {
+			if (pack.getName().startsWith(prefix)) {
+				// System.out.println("DEBUG: "+pack.getName());
 				list.add(pack.getName());
 			}
 		}
-	    return list.toArray(new String[0]);
+		return list.toArray(new String[0]);
 	}
-	
+
 	// private static GroovyShell shell;
 
 	private static GroovyShell getShell(Binding binding) {
@@ -79,7 +79,7 @@ public class ScriptExecutor implements ContextRunnable {
 
 		// alle abas db Packages importieren
 		ic.addStarImports(ScriptExecutor.findPackageNamesStartingWith("de.abas.erp.db"));
-		
+
 		cc.addCompilationCustomizers(ic);
 		// Basisklasse festlegen
 		cc.setScriptBaseClass("de.finetech.groovy.AbasBaseScript");
@@ -89,6 +89,73 @@ public class ScriptExecutor implements ContextRunnable {
 		shell = new GroovyShell(loader, binding, cc);
 
 		return shell;
+	}
+
+	/**
+	 * Methode welche vom Integrationstest ausgeführt wird
+	 * 
+	 * @param context
+	 * @param testscript
+	 * @return
+	 */
+	public static int executeScript(DbContext context, File testscript) {
+		GroovyShell shell = null;
+		boolean error = false;
+		// Genug Parameter übergben?
+			File groovyScript = testscript;
+			// existiert die Datei ?
+			if (groovyScript.exists()) {
+				// ist es eine Datei ?
+				if (groovyScript.isFile()) {
+					Object o = null;
+					Script gscript = null;
+					try {
+
+						Binding binding = new Binding();
+						// Parameter weitergeben
+						binding.setVariable("arg0", null);
+						binding.setVariable("args", null);
+						binding.setVariable("dbContext", context);
+						boolean debug = true;
+						binding.setVariable("GROOVYFODEBUG", debug);
+						shell = getShell(binding);
+						gscript = shell.parse(ScriptExecutor.readFile(testscript.getAbsolutePath(), Charset.forName("UTF-8")).intern());
+						o = gscript.run();
+						error = false;
+
+					} catch (CommandException e) {
+						System.err.println("Fehler:"+ e.getMessage());
+						System.err.println("Unbehandelte Ausnahme in :" + testscript.getName()+" "+ getStacktrace(e));
+						error = true;
+					} catch (AbortedException e) {
+						System.err.println("FOP abgebrochen \n FOP wurde durch Anwender abgebrochen");
+						error = true;
+					} catch (CompilationFailedException e) {
+						System.err.println("übersetzung fehlgeschlagen: "+ getStacktrace(e));
+						error = true;
+					} catch (Exception e) {
+						error = true;
+						throw new FOPException(e.getMessage(), e);
+					} finally {
+						clearGroovyClassesCache();
+						if (o != null)
+							GroovySystem.getMetaClassRegistry().removeMetaClass(o.getClass());
+						if (gscript != null)
+							GroovySystem.getMetaClassRegistry().removeMetaClass(gscript.getClass());
+						if (shell != null && shell.getClassLoader() != null)
+							shell.getClassLoader().clearCache();
+						if (error) {
+							return -1;
+						}
+					}
+				} else {
+					FO.box("Unzureichende Argumente", "Groovy Script ist keine Datei!");
+					return -1;
+				}
+			} else {
+				return -1;
+			}
+			return 0;
 	}
 
 	public static int executeScript(FOPSessionContext arg0, String[] arg1) {
