@@ -17,6 +17,10 @@ public class SelectionBuilder {
 		return new SelectionBuilder();
 	}
 
+	public static SelectionBuilder call() {
+		return new SelectionBuilder();
+	}
+	
 	/**
 	 * Standard ist die dialoglose Selektion Standard Variablen sind deutsch
 	 */
