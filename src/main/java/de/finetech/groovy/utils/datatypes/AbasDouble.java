@@ -2,12 +2,9 @@ package de.finetech.groovy.utils.datatypes;
 
 import de.abas.eks.jfop.FOPException;
 import de.abas.eks.jfop.remote.EKS;
-import de.abas.jfop.base.buffer.ReadableBuffer;
-import de.finetech.groovy.AbasBaseScript;
 import de.finetech.groovy.utils.GroovyFOException;
 import de.finetech.groovy.utils.GroovyFOScript;
 import de.finetech.groovy.utils.GroovyFOVariable;
-import de.finetech.groovy.utils.datatypes.TypGuesser.PossibleDatatypes;
 
 /**
  * 
