@@ -83,11 +83,22 @@ dependencies {
     runtime "de.abas.homedir:abas-jfop-base:1.0.0"
     runtime "de.abas.homedir:jcl-over-slf4j:1.0.0"
     runtime "de.abas.homedir:slf4j-api:1.0.0"
-
+    
+    runtime "de.abas.homedir:abas-enums:1.0.0"
+   
     testImplementation "junit:junit:4.12"
     testImplementation "org.hamcrest:hamcrest-all:1.3"
+    testImplementation "de.abas.homedir:abas-db-util:1.0.0"
+    testImplementation "de.abas.homedir:abas-enums:1.0.0"
     testImplementation "de.abas.esdk.test.util:esdk-test-utils:0.0.2"
+    
+    //integTestImplementation "de.abas.homedir:abas-enums:1.0.0"
+    
+    //integTestImplementation "de.abas.homedir:abas-enums:1.0.0";
+    //integTestImplementation "de.abas.homedir:abas-enums:1.0.0"
+    //integTestImplementation "de.abas.homedir:abas-db-util:1.0.0"
+    //integTestImplementation "de.abas.clientdir:abas-db:1.0.0-SNAPSHOT"
+    //integTestImplementation "de.abas.clientdir:abas-db-infosys:1.0.0-SNAPSHOT"
+    //integTestImplementation "de.abas.clientdir:abas-db-index:1.0.0-SNAPSHOT"
 
-    integTestImplementation 'de.abas.esdk.test.util:esdk-test-utils:0.0.2'
-    integTestImplementation "de.abas.homedir:abas-db-util:1.0.0"
 }
