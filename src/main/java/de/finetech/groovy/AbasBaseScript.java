@@ -7,6 +7,7 @@ import de.abas.eks.jfop.remote.FOPSessionContext;
 import de.abas.erp.db.DbContext;
 import de.finetech.groovy.utils.GroovyFOScript;
 import groovy.transform.CompileStatic;
+import groovyx.net.http.HttpBuilder;
 
 /**
  * 
@@ -164,11 +165,21 @@ public abstract class AbasBaseScript extends GroovyFOScript {
 			return this.success();
 		case "more":
 			return this.getMore();
+		case "HttpBuilder":
+			return this.HttpBuilder();
 	    default:
 	    	return name;
 		}
 		
 	}
 	
-
+	/**
+	 * Zugriff auf den REST-Client
+	 * 
+	 * @return
+	 */
+	public Class<HttpBuilder> HttpBuilder() {
+		return HttpBuilder.class;
+	}
+	
 }

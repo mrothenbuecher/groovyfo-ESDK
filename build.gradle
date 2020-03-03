@@ -6,6 +6,7 @@ repositories {
 	maven { url "http://$NEXUS_HOST:$NEXUS_PORT/nexus/content/repositories/$NEXUS_NAME-SNAPSHOT" }
 	maven { url "http://$NEXUS_HOST:$NEXUS_PORT/nexus/content/repositories/$NEXUS_NAME" }
 	maven { url "https://registry.abas.sh/artifactory/abas.maven-public/" }
+	mavenCentral()
 }
 
 esdk {
@@ -74,11 +75,15 @@ dependencies {
     // custom
     implementation "de.abas.homedir:abas-jfop-base:1.0.0"
     implementation "de.abas.homedir:abas-jfop-runtime:1.0.0"
+    implementation 'io.github.http-builder-ng:http-builder-ng-core:1.0.4'
+
 
     runtime "de.abas.homedir:commons-collections:1.0.0"
     runtime "de.abas.homedir:abas-jfop-base:1.0.0"
     runtime "de.abas.homedir:jcl-over-slf4j:1.0.0"
     runtime "de.abas.homedir:slf4j-api:1.0.0"
+    // custom
+    runtime 'io.github.http-builder-ng:http-builder-ng-core:1.0.4'
    
     testImplementation "junit:junit:4.12"
     testImplementation "org.hamcrest:hamcrest-all:1.3"

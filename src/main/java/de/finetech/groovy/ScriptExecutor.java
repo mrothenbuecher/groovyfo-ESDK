@@ -78,7 +78,7 @@ public class ScriptExecutor implements ContextRunnable {
 
 		// alle abas db Packages importieren
 		ic.addStarImports(ScriptExecutor.findPackageNamesStartingWith("de.abas.erp.db"));
-
+		
 		cc.addCompilationCustomizers(ic);
 		// Basisklasse festlegen
 		cc.setScriptBaseClass("de.finetech.groovy.AbasBaseScript");

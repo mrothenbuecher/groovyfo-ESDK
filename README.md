@@ -56,7 +56,7 @@ Text ow1/GROOVYFO.TEST wie folgt anlegen.
 * ow1/GROOVYFO.TEST
 */
 
-for(def i=0; i<100 && hole("Teil"); i++){
+for(def i=0; i<100 && hole Teil; i++){
         // Ausgabe auf Konsole
         println ( h.such )
 }
@@ -108,6 +108,23 @@ def always(){
 ```
 
 ### Helfer Klassen
+
+#### [REST-Client](https://http-builder-ng.github.io/http-builder-ng/asciidoc/html5/)
+```groovy
+//let's configure an http client to make calls to httpbin.org using the default http library
+def httpBin = HttpBuilder.configure {
+    request.uri = 'http://httpbin.org/'
+}
+
+//now let's GET /get endpoint at httpbin.
+//This will return a JSON formatted response with an origin property.
+def result = httpBin.get {
+    request.uri.path = '/get'
+}
+    
+println("Your ip address is: ${result.origin}")
+```
+
 
 #### SelectionBuilder
 Der [SelectionBuilder](https://github.com/mrothenbuecher/GroovyFO/wiki/SelectionBuilder) ist eine Hilfsklasse um einfach Selektion definieren zu können.
