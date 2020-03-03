@@ -56,7 +56,7 @@ Text ow1/GROOVYFO.TEST wie folgt anlegen.
 * ow1/GROOVYFO.TEST
 */
 
-for(def i=0; i<100 && hole Teil; i++){
+for(def i=0; i<100 && hole(Teil); i++){
         // Ausgabe auf Konsole
         println ( h.such )
 }
