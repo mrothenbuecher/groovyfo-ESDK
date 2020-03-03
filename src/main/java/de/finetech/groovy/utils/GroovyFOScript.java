@@ -1403,4 +1403,8 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 		belegen(cmd);
 	}
 	
+	public SelectionBuilder SelectionBuilder() {
+		return SelectionBuilder.build();
+	}
+	
 }

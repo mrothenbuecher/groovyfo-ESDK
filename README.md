@@ -107,15 +107,15 @@ def always(){
 
 ```
 
-### Helferlein
+### Helfer Klassen
 
 #### SelectionBuilder
 Der [SelectionBuilder](https://github.com/mrothenbuecher/GroovyFO/wiki/SelectionBuilder) ist eine Hilfsklasse um einfach Selektion definieren zu können.
 ```groovy
 // Artikel von a bis b
-def selection1 = new SelectionBuilder().normal("such2","A","B").database(2).group(1)
+def selection1 = SelectionBuilder().normal("such2","A","B").database(2).group(1)
 // im Matchcode auf den Namen in Bediensprache
-def selection2 = new SelectionBuilder().matchcode("namebspr","Schif*fahrt")
+def selection2 = SelectionBuilder().matchcode("namebspr","Schif*fahrt")
 ...
 ```
 
