@@ -150,8 +150,10 @@ public abstract class AbasBaseScript extends GroovyFOScript {
 	/**
 	 * Falls eine Eigenschaft nicht definiert ist, wird die Eigenschaft als String zurück gegeben
 	 * 
-	 * so wird folgendes möglich: m["variable"] -> m.variable
-	 * 
+	 * so wird folgendes möglich: 
+	 * 	- m["variable"] -> m.variable
+	 *  - hole("Teil")  -> hole(Teil)
+	 *  
 	 * siehe https://groovy-lang.org/metaprogramming.html
 	 * 
 	 * @param name
