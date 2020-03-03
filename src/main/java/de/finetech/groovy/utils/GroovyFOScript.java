@@ -859,10 +859,6 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 			EKS.println(cmd);
 	}
 
-	public Object propertyMissing(String name) {
-		return name;
-	}
-
 	public void protection(String cmd) {
 		this.schutz(cmd);
 	}

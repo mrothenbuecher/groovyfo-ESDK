@@ -145,5 +145,30 @@ public abstract class AbasBaseScript extends GroovyFOScript {
 		}
 		return null;
 	}
+	
+	/**
+	 * Falls eine Eigenschaft nicht definiert ist, wird die Eigenschaft als String zurück gegeben
+	 * 
+	 * so wird folgendes möglich: m["variable"] -> m.variable
+	 * 
+	 * siehe https://groovy-lang.org/metaprogramming.html
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public Object propertyMissing(String name) {
+		switch(name) {
+		case "mehr":
+			return this.mehr();
+		case "success":
+			return this.success();
+		case "more":
+			return this.getMore();
+	    default:
+	    	return name;
+		}
+		
+	}
+	
 
 }
