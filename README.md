@@ -111,18 +111,31 @@ def always(){
 
 #### [REST-Client](https://http-builder-ng.github.io/http-builder-ng/asciidoc/html5/)
 ```groovy
-//let's configure an http client to make calls to httpbin.org using the default http library
+import groovyx.net.http.FromServer
+import static java.nio.charset.StandardCharsets.UTF_8
+
+// REST Beispiel für ABAS-BPM
 def httpBin = HttpBuilder.configure {
-    request.uri = 'http://httpbin.org/'
+    request.uri = 'http://camundaserver:8088'
+    request.auth.basic 'name', 'passwort'
+    request.charset = UTF_8
+    request.contentType = "application/json"
 }
 
-//now let's GET /get endpoint at httpbin.
-//This will return a JSON formatted response with an origin property.
-def result = httpBin.get {
-    request.uri.path = '/get'
+//Prozess "Test" starten
+response = httpBin.post {
+    request.uri.path = '/engine-rest/process-definition/key/Test/start'
+    request.body = [variables:[
+        test:[value:"Wert",type:"String"],
+    ]]
+    response.success { FromServer fs, Object body ->
+        println 'ok'
+    }
+
+    response.failure { FromServer fs, Object body ->
+        println 'not ok'+body
+    }
 }
-    
-println("Your ip address is: ${result.origin}")
 ```
 
 
