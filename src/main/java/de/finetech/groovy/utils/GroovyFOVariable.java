@@ -95,4 +95,8 @@ public abstract class GroovyFOVariable<V> extends GroovyObjectSupport implements
 		return this.getValue().toString();
 	}
 
+	public Object plus(String val) {
+		return this.toString().concat(val);
+	}
+	
 }
