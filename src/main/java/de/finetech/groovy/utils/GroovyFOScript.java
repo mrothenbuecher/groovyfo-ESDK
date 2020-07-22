@@ -1014,14 +1014,17 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 		switch (abasType) {
 		case INTEGER:
 			if (value == null || value.isEmpty())
-				new BigInteger("0");
-			return new BigInteger(value);
+				//return new BigInteger("0");
+				return 0;
+			//return new BigInteger(value);
+			return Integer.parseInt(value);
 		case DOUBLE:
 		case DOUBLEDT:
 		case DOUBLET:
 		case DOUBLED:
 			if (value == null || value.isEmpty())
-				return new BigDecimal(0d);
+				return 0.0d;
+				//return new BigDecimal(0d);
 			if (abasType == PossibleDatatypes.DOUBLEDT || abasType == PossibleDatatypes.DOUBLET
 					|| abasType == PossibleDatatypes.DOUBLED) {
 				// FIXME was mit anderen Trennzeichen
@@ -1032,7 +1035,8 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 					value = value.replace(',', '.');
 				}
 			}
-			return new BigDecimal(value);
+			return Double.parseDouble(value);
+			//return new BigDecimal(value);
 		case BOOLEAN:
 			return isTrue(value);
 
