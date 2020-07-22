@@ -2,6 +2,7 @@ package de.finetech.groovy.utils;
 
 import java.awt.Color;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.List;
@@ -1013,14 +1014,14 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 		switch (abasType) {
 		case INTEGER:
 			if (value == null || value.isEmpty())
-				return 0;
-			return Integer.parseInt(value);
+				new BigInteger("0");
+			return new BigInteger(value);
 		case DOUBLE:
 		case DOUBLEDT:
 		case DOUBLET:
 		case DOUBLED:
 			if (value == null || value.isEmpty())
-				return 0.0d;
+				return new BigDecimal(0d);
 			if (abasType == PossibleDatatypes.DOUBLEDT || abasType == PossibleDatatypes.DOUBLET
 					|| abasType == PossibleDatatypes.DOUBLED) {
 				// FIXME was mit anderen Trennzeichen
@@ -1031,7 +1032,7 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 					value = value.replace(',', '.');
 				}
 			}
-			return Double.parseDouble(value);
+			return new BigDecimal(value);
 		case BOOLEAN:
 			return isTrue(value);
 
