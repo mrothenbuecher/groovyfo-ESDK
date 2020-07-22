@@ -1,7 +1,10 @@
 package de.finetech.groovy.utils;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.text.ParseException;
 
+import de.abas.ceks.jedp.EDPEKSArtInfo;
 import de.abas.eks.jfop.FOPException;
 import de.abas.jfop.base.buffer.ReadableBuffer;
 import de.finetech.groovy.utils.datatypes.TypGuesser.PossibleDatatypes;
@@ -33,7 +36,10 @@ public class GroovyFOReadableMap<T extends ReadableBuffer> extends GroovyFOBaseR
 			case DOUBLEDT:
 			case DOUBLET:
 			case DOUBLED:
-				return buffer.getDoubleValue(skey);
+				EDPEKSArtInfo nfo = new EDPEKSArtInfo(buffer.getFieldType(skey));
+				MathContext m = new MathContext(nfo.getFractionDigits());
+				BigDecimal b = new BigDecimal(buffer.getDoubleValue(skey), m);
+				return b;
 				//return new AbasDouble(buffer.getQualifiedFieldName(skey),script);
 			case BOOLEAN:
 				return buffer.getBooleanValue(skey);
