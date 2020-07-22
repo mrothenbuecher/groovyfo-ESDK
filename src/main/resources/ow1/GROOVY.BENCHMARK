@@ -1,0 +1,48 @@
+println GroovySystem.version
+
+println AbasBaseScript.version
+
+art("I5", "xi", "xj")
+
+for(def foo = 0;foo<10;foo++){
+
+def start = System.currentTimeMillis()
+def start2 = System.currentTimeMillis()
+def j = 0
+def avg = 0.0, avg2=0.0;
+for(int k=0;k<10;k++){
+        start = System.currentTimeMillis();
+        for(int i=0; i < 10000 ; i++){
+                j = i;
+        }
+        avg += System.currentTimeMillis()-start
+}
+println "Dauer GroovyFO groovy: "+(avg/10.0)+" ms"
+
+avg = 0.0
+u.xj = 0
+u.xi = 0
+for(int k=0;k<10;k++){
+        start = System.currentTimeMillis();
+        for(int i=0; i < 10000 ; i++){
+                u.xj = i
+        }
+        avg += System.currentTimeMillis()-start
+}
+println "Dauer GroovyFO FO1: "+(avg/10.0)+" ms"
+
+avg = 0.0
+u.xj = 0
+u.xi = 0
+
+for(int k=0;k<10;k++){
+        start = System.currentTimeMillis();
+        for(int i = 0; i < 10000 ; i++){
+                j = u.xi
+        }
+        avg += System.currentTimeMillis()-start
+}
+println "Dauer GroovyFO FO2: "+(avg/10.0)+" ms"
+
+
+}
