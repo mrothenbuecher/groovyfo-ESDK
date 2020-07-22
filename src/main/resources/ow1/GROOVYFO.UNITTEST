@@ -45,4 +45,12 @@ if(mehr){
         assert (h.zuplatz^"id") == (h.zuplatz^id)
 }
 
+art("R7.2","xa","xb")
+
+u.a = 0.7;
+u.b = 0.9;
+u.a = u.a + 0.1;
+u.b = u.b - 0.1;
+assert u.a == u.b
+
 println "Alle Tests erfolgreich bestanden"
