@@ -6,7 +6,7 @@ services:
     #
     erp:
       #image: sdp.registry.abas.sh/abas/test:2017r4n16p22
-      image: sdp.registry.abas.sh/abas/test:2018r4n14p27
+      image: sdp.registry.abas.sh/abas/test:2019r4n13
       init: true
       container_name: "erp"
 
