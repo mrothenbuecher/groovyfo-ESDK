@@ -31,7 +31,7 @@ public class GroovyFOReadableMap<T extends ReadableBuffer> extends GroovyFOBaseR
 			PossibleDatatypes abasType = script.getType(buffer.getQualifiedFieldName(skey),buffer.getFieldType(skey));
 			switch (abasType) {
 			case INTEGER:
-				return new BigInteger(buffer.getStringValue(skey));;
+				return new BigInteger(buffer.getStringValue(skey));
 				//return new AbasInteger(buffer.getQualifiedFieldName(skey),script);
 			case DOUBLE:
 			case DOUBLEDT:
@@ -39,7 +39,7 @@ public class GroovyFOReadableMap<T extends ReadableBuffer> extends GroovyFOBaseR
 			case DOUBLED:
 				EDPEKSArtInfo nfo = new EDPEKSArtInfo(buffer.getFieldType(skey));
 				MathContext m = new MathContext(nfo.getFractionDigits());
-				return new BigDecimal(buffer.getDoubleValue(skey), m);;
+				return new BigDecimal(buffer.getDoubleValue(skey), m);
 				//return buffer.getDoubleValue(skey);
 				//return new AbasDouble(buffer.getQualifiedFieldName(skey),script);
 			case BOOLEAN:
