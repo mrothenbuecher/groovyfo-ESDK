@@ -2,6 +2,8 @@ package de.finetech.groovy.utils.datatypes;
 
 import java.util.regex.Pattern;
 
+import de.abas.ceks.jedp.EDPEKSArtInfo;
+
 /**
  * 
  * @author Michael Rothenbücher, Finetech GmbH & Co. KG
@@ -32,10 +34,20 @@ public class TypGuesser {
 	 * @return
 	 */
 	public static PossibleDatatypes getClassOfType(String abasType) {
-
+		EDPEKSArtInfo nfo = new EDPEKSArtInfo(abasType);
+		
+		/*
 		if (integerPattern.matcher(abasType).matches()) {
 			return PossibleDatatypes.INTEGER;
-		} // real tausender und dezimal
+		} 
+		*/
+		if(nfo.getIntegerDigits() > 0 && nfo.getFractionDigits() == 0) {
+			return PossibleDatatypes.INTEGER;
+		}
+		
+		
+		// real tausender und dezimal
+		/*
 		if (doublePattern.matcher(abasType).matches()) {
 			// Real
 			if (doubledtPattern.matcher(abasType).matches()) {
@@ -48,7 +60,23 @@ public class TypGuesser {
 				return PossibleDatatypes.DOUBLED;
 			} 
 			return PossibleDatatypes.DOUBLE;
-		} // bool
+		}*/
+		if (nfo.getIntegerDigits() > 0 && nfo.getFractionDigits() > 0) {
+			// Real
+			if (doubledtPattern.matcher(abasType).matches()) {
+				return PossibleDatatypes.DOUBLEDT;
+			} // real tausender
+			if (doubletPattern.matcher(abasType).matches()) {
+				return PossibleDatatypes.DOUBLET;
+			} // real dezimal trennzeichen
+			if (doubledPattern.matcher(abasType).matches()) {
+				return PossibleDatatypes.DOUBLED;
+			} 
+			return PossibleDatatypes.DOUBLE;
+		} 
+		
+		
+		// bool
 		if (boolPattern.matcher(abasType).matches()) {
 			return PossibleDatatypes.BOOLEAN;
 		}
