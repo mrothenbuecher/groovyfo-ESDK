@@ -1,8 +1,10 @@
 package de.finetech.groovy.utils;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.text.ParseException;
 
+import de.abas.ceks.jedp.EDPEKSArtInfo;
 import de.abas.eks.jfop.FOPException;
 import de.abas.jfop.base.buffer.WriteableBuffer;
 
@@ -33,17 +35,24 @@ public class GroovyFOWriteableMap<T extends WriteableBuffer> extends GroovyFORea
 				return value;
 				//return script.fo(key, (Integer) value);
 			} else if (valueClass == Double.class || valueClass == Float.class || valueClass == BigDecimal.class) {
-				double val = 0.0;
 				if(valueClass == BigDecimal.class) {
-					val = ((BigDecimal) value).doubleValue();
+					//val = ((BigDecimal) value).doubleValue();
+					EDPEKSArtInfo nfo = new EDPEKSArtInfo(buffer.getFieldType(key));
+					MathContext m = new MathContext(nfo.getFractionDigits());
+					
+					BigDecimal b = ((BigDecimal) value).add(BigDecimal.ZERO).round(m);
+					
+					buffer.setValue(key, b);
 				}
 				else if(valueClass == Double.class) {
-					val = ((Double) value).doubleValue();
+					//val = ((Double) value).doubleValue();
+					buffer.setValue(key, ((Double) value));
 				}
 				else if(valueClass == Float.class) {
-					val = ((Float) value).doubleValue();
+					//val = ((Float) value).doubleValue();
+					buffer.setValue(key, ((Float) value));
 				}
-				buffer.setValue(key, val);
+				//buffer.setValue(key, val);
 				return value;
 				//return script.fo(key, (Double) value);
 			} else if (valueClass == Boolean.class) {
