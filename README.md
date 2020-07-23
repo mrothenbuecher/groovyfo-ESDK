@@ -63,24 +63,24 @@ Zum testen Kommando aufrufen mit
 ```
 
 #### Kurzübersicht
-| JFOP                          | dt                                                                    | engl      |
-| ----------------------------- | --------------------------------------------------------------------- | ----------|
-| EKS.Hvar(...)                 | h.von                                                                 |           |
-| EKS.Mvar(...)                 | m.von                                                                 |           |
-| EKS.hole(...)                 | hole(...) <br/> hole(String db, SelectBuilder builder) <br/> hole(String db, String selektion)| select(...) <br/> select(String db, SelectBuilder builder) <br/> select(String db, String selektion)|
-| EKS.lade(...)                 | lade(...) <br/> lade(int puffer, String db, SelectBuilder builder) <br/> lade(int puffer, String db, String selektion)| load(...) <br/> load(int puffer, String db, SelectBuilder builder) <br/> load(int puffer, String db, String selektion)|
-| EKS.formel(...)               | fo(String variable, wert)                                             | |
-| EKS.getValue(puffer, varName) | l1.von ... <br/> l2.von ... <br/> usw...                              | |
-| EKS.println(...)              | println(...)                                                          | |
-| EKS.box(...,...)              | box(...,...)                                                          | |
-| EKS.eingabe(...)              | ein(...)                                                              | in(...)|
-| EKS.bringe(...)               | bringe(...)                                                           | rewrite(...)|
-| EKS.mache(...)                | mache(...)                                                            | make()|
-| EKS.mache("maske zeile +O")   | plusZeile()                                                           | addRow()|
-| EKS.bringe("maske zeile -O")  | entfZeile()                                                           | removeRow()|
-| EKS.Dvar(...)                 | d.von                                                                 | |
-|                               | mehr                                                                  | success or more|
-|...                            | ...                                                                   | ... |
+| JFOP                          | FOP            | dt                                                                    | engl      |
+| ----------------------------- | -------------- | --------------------------------------------------------------------- | ----------|
+| EKS.Hvar(...)                 |  H\|von        | h.von                                                                 |           |
+| EKS.Mvar(...)                 |  M\|von        | m.von                                                                 |           |
+| EKS.hole(...)                 |  \.hole ...     | hole(...) <br/> hole(String db, SelectBuilder builder) <br/> hole(String db, String selektion)| select(...) <br/> select(String db, SelectBuilder builder) <br/> select(String db, String selektion)|
+| EKS.lade(...)                 |  \.lade 1 ...   | lade(...) <br/> lade(int puffer, String db, SelectBuilder builder) <br/> lade(int puffer, String db, String selektion)| load(...) <br/> load(int puffer, String db, SelectBuilder builder) <br/> load(int puffer, String db, String selektion)|
+| EKS.formel(...)               |  \.fo var = ... | fo(String variable, wert)                                             | |
+| EKS.getValue(puffer, varName) |  l1\|von       | l1.von ... <br/> l2.von ... <br/> usw...                              | |
+| EKS.println(...)              |                | println(...)                                                          | |
+| EKS.box(...,...)              |  \.box ...      | box(...,...)                                                          | |
+| EKS.eingabe(...)              |  \.eingabe ...  | ein(...)                                                              | in(...)|
+| EKS.bringe(...)               |  \.bringe ...   | bringe(...)                                                           | rewrite(...)|
+| EKS.mache(...)                |  \.mache ...    | mache(...)                                                            | make()|
+| EKS.mache("maske zeile +O")   |  \.mache maske zeile +O   | plusZeile()                                                           | addRow()|
+| EKS.bringe("maske zeile -O")  |  \.mache maske zeile -O   | entfZeile()                                                           | removeRow()|
+| EKS.Dvar(...)                 |  D\|von        | d.von                                                                 | |
+|                               |  G\|mehr       | mehr                                                                  | success or more|
+|...                            |  ...           | ...                                                                   | ... |
 
 ### Ablaufsteuerung
 
