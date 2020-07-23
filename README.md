@@ -5,7 +5,7 @@ ESDK App basierend auf [GroovyFO](https://github.com/mrothenbuecher/GroovyFO)
 GroovyFO
 ===
 
-GroovyFO ist der Versuch das gute aus JFOP und Standard FO des abas-ERP zu kombinieren. GroovyFO ermöglicht es, wie bei FOP gewohnt, einfach Programme im abas selbst zu schreiben (als Text anlegen). Es können nun jedoch ohne zusätzliches kompilieren und redeployen JFOP's in Form von Groovyscripten ausgeführt werden. Außerdem sind Konstrukte wie while, for, if ..., Funktionen sowie Klassen möglich.
+GroovyFO ist der Versuch das gute aus JFOP und Standard FO des abas-ERP zu kombinieren. GroovyFO ermöglicht es, wie bei FOP gewohnt, einfach Programme im abas selbst zu schreiben (als Text anlegen). Es können nun jedoch ohne zusätzliches kompilieren und redeployen JFOP's in Form von GroovyFO-Scripten ausgeführt werden.
 
 einige Vorteile:<br>
 * [automatische Typkonvertierung](https://github.com/mrothenbuecher/GroovyFO/wiki/automatische-Typkonvertierung),beim Zugriff auf abas Variablen (bsp.: I3 -> Integer)
