@@ -5,11 +5,7 @@ ESDK App basierend auf [GroovyFO](https://github.com/mrothenbuecher/GroovyFO)
 GroovyFO
 ===
 
-GroovyFO ist der Versuch das gute aus JFOP und Standard FO des abas-ERP zu kombinieren.
-
-GroovyFO vereinfacht den Umgang mit JFOP durch das bereitstellen eines einfachen an FOP angelehnten Syntaxes.
-
-Es können nun ohne zusätzliches kompilieren und redeployen JFOP's in Form von Groovyscripten ausgeführt werden. Außerdem sind Konstrukte wie while, for, if ..., Funktionen sowie Klassen möglich.
+GroovyFO ist der Versuch das gute aus JFOP und Standard FO des abas-ERP zu kombinieren. GroovyFO ermöglicht es, wie bei FOP gewohnt, einfach Programme im abas selbst zu schreiben (als Text anlegen). Es können nun jedoch ohne zusätzliches kompilieren und redeployen JFOP's in Form von Groovyscripten ausgeführt werden. Außerdem sind Konstrukte wie while, for, if ..., Funktionen sowie Klassen möglich.
 
 einige Vorteile:<br>
 * [automatische Typkonvertierung](https://github.com/mrothenbuecher/GroovyFO/wiki/automatische-Typkonvertierung),beim Zugriff auf abas Variablen (bsp.: I3 -> Integer)
@@ -33,7 +29,7 @@ einige Vorteile:<br>
 
 ## Funktionsweise
 
-Die Klasse de.finetech.groovy.ScriptExecutor ist ein JFOP welches als ersten Parameter eine Textdatei (Groovyscript) erwartet. Dieses wird dann auf Basis der Script-Klasse de.finetech.groovy.AbasBaseScript initialisiert. Diese Klasse kapselt JFOP-Funktionen um so Schreibarbeit sparen zu können. Weiterhin besteht durch die Verwendung von Groovy die Möglichkeit Kontrollstrukturen wie if-Anweisungen, Schleifen oder eben auch Klassen im Kontext eines FOP zu verwenden. Dadurch das bei jeden Aufruf des ScriptExecuters die Groovy Datei neu interpretiert wird, können Änderungen an dieser Datei ohne erneutes redeployen des JFOP-Server wirksam werden. Dieses Verhalten ist ähnlich dem Verhalten von FOP's.
+Die Klasse `de.finetech.groovy.ScriptExecutor` ist ein JFOP welches als ersten Parameter eine Textdatei (Groovyscript) erwartet. Dieses wird dann auf Basis der Script-Klasse `de.finetech.groovy.AbasBaseScript` initialisiert. Diese Klasse kapselt JFOP-Funktionen um so Schreibarbeit sparen zu können. Weiterhin besteht durch die Verwendung von Groovy die Möglichkeit Kontrollstrukturen wie if-Anweisungen, Schleifen oder eben auch Klassen im Kontext eines FOP zu verwenden. Dadurch das bei jeden Aufruf des ScriptExecuters die Groovy Datei neu interpretiert wird, können Änderungen an dieser Datei ohne erneutes redeployen des JFOP-Server wirksam werden. Dieses Verhalten ist ähnlich dem Verhalten von FOP's.
 
 
 ## Verwendung
