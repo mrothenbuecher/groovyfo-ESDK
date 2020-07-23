@@ -63,7 +63,7 @@ Zum testen Kommando aufrufen mit
 ```
 
 #### Kurzübersicht
-| JFOP                          | FOP            | dt                                                                    | engl      |
+| JFOP                          | FOP            | groovyfo dt                                                           | engl      |
 | ----------------------------- | -------------- | --------------------------------------------------------------------- | ----------|
 | EKS.Hvar(...)                 |  H\|von        | h.von                                                                 |           |
 | EKS.Mvar(...)                 |  M\|von        | m.von                                                                 |           |
