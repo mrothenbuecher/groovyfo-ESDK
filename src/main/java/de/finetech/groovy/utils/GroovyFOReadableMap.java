@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 import java.text.ParseException;
+import java.util.Map;
+import java.util.TreeMap;
 
 import de.abas.ceks.jedp.EDPEKSArtInfo;
 import de.abas.eks.jfop.FOPException;
@@ -20,15 +22,33 @@ public class GroovyFOReadableMap<T extends ReadableBuffer> extends GroovyFOBaseR
 
 	private static final long serialVersionUID = 9140667579366484095L;
 
+	private Map<String, PossibleDatatypes> varMap;
+	
 	public GroovyFOReadableMap(T buffer, GroovyFOScript script) {
 		super(buffer, script);
+		varMap = new TreeMap<String,PossibleDatatypes>();
 	}
 
+	/**
+	 * 
+	 * setzt die VariablenMap zurück
+	 */
+	public void reset() {
+		varMap.clear();
+	}
+	
 	@Override
 	public Object get(Object key) {
 		try {
 			String skey = key.toString();
-			PossibleDatatypes abasType = script.getType(buffer.getQualifiedFieldName(skey),buffer.getFieldType(skey));
+			//buffer
+			PossibleDatatypes abasType;
+			if(varMap.containsKey(skey)) {
+				abasType = varMap.get(skey);
+			}else {
+				abasType = script.getType(buffer.getQualifiedFieldName(skey),buffer.getFieldType(skey));
+				varMap.put(skey, abasType);
+			}
 			switch (abasType) {
 			case INTEGER:
 				return buffer.getIntegerValue(skey);

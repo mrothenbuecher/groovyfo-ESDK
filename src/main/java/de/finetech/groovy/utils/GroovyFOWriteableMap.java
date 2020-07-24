@@ -31,7 +31,8 @@ public class GroovyFOWriteableMap<T extends WriteableBuffer> extends GroovyFORea
 			Class<?> valueClass = value.getClass();
 			// FIXME muss besser gehen
 			if (valueClass == Integer.class) {
-				buffer.setValue(key, (Integer) value);
+				//script.println("Debug Fooo");
+				buffer.setValue(key, ((Integer) value).intValue());
 				return value;
 				//return script.fo(key, (Integer) value);
 			} else if (valueClass == Double.class || valueClass == Float.class || valueClass == BigDecimal.class) {

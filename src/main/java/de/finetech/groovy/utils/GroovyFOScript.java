@@ -1144,6 +1144,7 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 	public boolean hole(String cmd) {
 		if (this.hselection == null || !this.hselection.equals(cmd)) {
 			this.resetMap("h");
+			h.reset();
 			this.hselection = cmd;
 		}
 		return EKS.hole(cmd);
@@ -1166,6 +1167,7 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 		} else {
 			this.hselection = selection.toString();
 			this.resetMap("h");
+			h.reset();
 			return EKS.hole(db + " " + handleSelectionString(hselection));
 		}
 	}
@@ -1235,6 +1237,35 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 			this.resetMap(Integer.toString(puffer));
 			this.lselection[puffer] = cmd;
 		}
+		switch(puffer) {
+		case 1:
+			l1.reset();
+			break;
+		case 2:
+			l2.reset();
+			break;
+		case 3:
+			l3.reset();
+			break;
+		case 4:
+			l4.reset();
+			break;
+		case 5:
+			l5.reset();
+			break;
+		case 6:
+			l6.reset();
+			break;
+		case 7:
+			l7.reset();
+			break;
+		case 8:
+			l8.reset();
+			break;
+		case 9:
+			l9.reset();
+			break;
+		}
 		return EKS.lade(puffer + " " + cmd);
 	}
 
@@ -1254,6 +1285,35 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 		} else {
 			this.resetMap(Integer.toString(puffer));
 			this.lselection[puffer] = selection.toString();
+			switch(puffer) {
+			case 1:
+				l1.reset();
+				break;
+			case 2:
+				l2.reset();
+				break;
+			case 3:
+				l3.reset();
+				break;
+			case 4:
+				l4.reset();
+				break;
+			case 5:
+				l5.reset();
+				break;
+			case 6:
+				l6.reset();
+				break;
+			case 7:
+				l7.reset();
+				break;
+			case 8:
+				l8.reset();
+				break;
+			case 9:
+				l9.reset();
+				break;
+			}
 			return EKS.lade(puffer + " " + db + " " + this.handleSelectionString(this.lselection[puffer]));
 		}
 	}
