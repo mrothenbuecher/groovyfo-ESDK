@@ -45,9 +45,12 @@ if(mehr){
         assert (h.zuplatz^"id") == (h.zuplatz^id)
 }
 
+//TODO Daten prüfen
 art("GD", "xheute")
 u.xheute = "."
-println (u.xheute)
+//println (u.xheute)
+
+//TODO Funktionen prüfen F|....
 
 art("R7.2","xa","xb")
 
