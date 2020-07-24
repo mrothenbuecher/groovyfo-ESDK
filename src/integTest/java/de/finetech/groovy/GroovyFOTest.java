@@ -21,7 +21,7 @@ public class GroovyFOTest extends EsdkIntegTest {
 		for(String error: this.getErrors()) {
 			System.err.println(error);
 		}
-		//assertEquals("Test", true, false);
+		
 		assertEquals("Es gab Fehler", this.getErrors().size(), 0);
 	}
 	
