@@ -45,12 +45,16 @@ if(mehr){
         assert (h.zuplatz^"id") == (h.zuplatz^id)
 }
 
+art("GD", "xheute")
+u.xheute = "."
+println (u.xheute)
+
 art("R7.2","xa","xb")
 
-u.a = 0.7;
-u.b = 0.9;
-u.a = u.a + 0.1;
-u.b = u.b - 0.1;
-assert u.a == u.b
+u.xa = 0.7;
+u.xb = 0.9;
+u.xa = u.xa + 0.1;
+u.xb = u.xb - 0.1;
+assert u.xa == u.xb
 
 println "Alle Tests erfolgreich bestanden"
