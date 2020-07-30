@@ -36,6 +36,17 @@ u.xbis++
 assert u.xvon < u.xbis
 u.xvon = u.xvon + 2
 assert u.xvon > u.xbis
+// ist ein Sonntag
+u.xvon = "10.05.2020"
+u.xbis = "12.05.2020"
+assert (u.xvon % 7) == 7
+assert (u.xvon % 1) == "Sonntag"
+assert (u.xvon & u.xbis) == 1
+// nÑchste Arbeitstag
+u.xvon = u.xvon & 0
+u.xbis = "11.05.2020"
+assert u.xvon == u.xbis
+
 
 hole("Teil","\$,,@gruppe=1;")
 if(mehr){
@@ -44,13 +55,7 @@ if(mehr){
         assert (h.zuplatz^id) != null
         assert (h.zuplatz^"id") == (h.zuplatz^id)
 }
-
-//TODO Daten pr√ºfen
-art("GD", "xheute")
-u.xheute = "."
-//println (u.xheute)
-
-//TODO Funktionen pr√ºfen F|....
+//TODO Funktionen prÅfen F|....
 
 art("R7.2","xa","xb")
 

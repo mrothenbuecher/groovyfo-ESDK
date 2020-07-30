@@ -101,8 +101,35 @@ public class AbasDate extends GroovyFOVariable<String> {
 		return script.getComputedValue(expr).toString();
 	}
 
+	/**
+	 * Addieren von Arbeitstagen
+	 * 
+	 *  u|xdat & 5
+	 * 
+	 * @param i
+	 * @return
+	 * @throws FOPException
+	 * @throws GroovyFOException
+	 * @throws ParseException
+	 */
 	public Object and(int i) throws FOPException, GroovyFOException, ParseException {
 		String expr = this.getVariablename() + "&" + i;
+		return script.getComputedValue(expr);
+	}
+	
+	/**
+	 * Addieren von Arbeitstagen
+	 * 
+	 *  u|xdat & U|dat
+	 * 
+	 * @param date
+	 * @return
+	 * @throws FOPException
+	 * @throws GroovyFOException
+	 * @throws ParseException
+	 */
+	public Object and(AbasDate date) throws FOPException, GroovyFOException, ParseException {
+		String expr = this.getVariablename() + "&" + date.getVar();
 		return script.getComputedValue(expr);
 	}
 
