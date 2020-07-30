@@ -27,6 +27,10 @@ assert u.xt1 != u.xt2
 u.xt1 += " nicht"
 assert u.xt1 == u.xt2
 
+//TODO Funktionen prÅfen F|....
+println F.regmatch("u|xt1", "Geht nicht")
+
+
 art("GD","xvon","xbis")
 u.xvon = "."
 u.xbis = "."
@@ -55,7 +59,7 @@ if(mehr){
         assert (h.zuplatz^id) != null
         assert (h.zuplatz^"id") == (h.zuplatz^id)
 }
-//TODO Funktionen prÅfen F|....
+
 
 art("R7.2","xa","xb")
 

@@ -39,7 +39,11 @@ public class FOFunction {
 					 * instanceof String){ parameter += "\""+o.toString()+"\""; }else{ parameter +=
 					 * o.toString(); }
 					 */
-					parameter += o.toString();
+					if(o instanceof String && i > 0) {
+						parameter += "\""+o.toString()+"\"";
+					}
+					else 
+						parameter += o.toString();
 
 					// einzelnen Parameter mit komma trennen
 					if (i < (objs.length - 1)) {
