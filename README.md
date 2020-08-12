@@ -1,4 +1,4 @@
-Status:**beta**
+Status:**beta** , nicht im produktiv Systemen verwenden!
 
 ESDK App basierend auf [GroovyFO](https://github.com/mrothenbuecher/GroovyFO)
 
