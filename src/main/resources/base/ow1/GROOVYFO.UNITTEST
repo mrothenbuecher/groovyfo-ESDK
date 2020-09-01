@@ -28,7 +28,7 @@ u.xt1 += " nicht"
 assert u.xt1 == u.xt2
 
 //TODO Funktionen prÅfen F|....
-println F.regmatch("u|xt1", "Geht nicht")
+assert F.regmatch("u|xt1", "Geht nicht") == true
 
 
 art("GD","xvon","xbis")
