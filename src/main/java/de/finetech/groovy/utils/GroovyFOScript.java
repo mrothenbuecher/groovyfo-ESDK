@@ -1468,4 +1468,12 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 		return SelectionBuilder.build();
 	}
 	
+	public DbContext getDbContext() {
+		return this.dbContext;
+	}
+	
+	public FOPSessionContext getFOPSessionContext() {
+		return this.arg0;
+	}
+	
 }
