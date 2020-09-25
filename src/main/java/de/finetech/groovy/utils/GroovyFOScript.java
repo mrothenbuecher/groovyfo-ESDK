@@ -98,6 +98,7 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 	protected String[] args;
 	
 	protected DbContext dbContext;
+	protected String scriptfile;
 	
 	protected boolean GROOVYFODEBUG = false;
 

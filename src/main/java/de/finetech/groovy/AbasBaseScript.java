@@ -94,6 +94,7 @@ public abstract class AbasBaseScript extends GroovyFOScript {
 			variables = null;
 			arg0 = null;
 			args = null;
+			scriptfile = null;
 			dbContext=null;
 		} finally {
 			super.finalize();
@@ -116,6 +117,7 @@ public abstract class AbasBaseScript extends GroovyFOScript {
 			this.GROOVYFODEBUG = (boolean) this.getBinding().getVariable("GROOVYFODEBUG");
 			this.arg0 = (FOPSessionContext) this.getBinding().getVariable("arg0");
 			this.args = (String[]) this.getBinding().getVariable("args");
+			this.scriptfile = (String) this.getBinding().getVariable("scriptfile");
 			this.dbContext = (DbContext) this.getBinding().getVariable("dbContext");
 			o = runCode();
 		} catch (Exception e) {
@@ -144,7 +146,7 @@ public abstract class AbasBaseScript extends GroovyFOScript {
 		if (ex instanceof Exception) {
 			Exception e = (Exception) ex;
 			e.printStackTrace();
-			println("Unbehandelte Ausnahme: \n" + getStacktrace(e));
+			println("Unbehandelte Ausnahme in "+this.scriptfile+": \n" + getStacktrace(e));
 		}
 		return null;
 	}

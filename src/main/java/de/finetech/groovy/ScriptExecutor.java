@@ -110,6 +110,7 @@ public class ScriptExecutor implements ContextRunnable {
 						// Parameter weitergeben
 						binding.setVariable("arg0", arg0);
 						binding.setVariable("args", arg1);
+						binding.setVariable("scriptfile", arg1[1]);
 						binding.setVariable("dbContext", arg0.getDbContext());
 						
 						boolean debug = false;
