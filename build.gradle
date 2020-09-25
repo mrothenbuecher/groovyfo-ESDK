@@ -76,8 +76,8 @@ dependencies {
     implementation "de.abas.homedir:abas-jfop-base:1.0.0"
     implementation "de.abas.homedir:abas-jfop-runtime:1.0.0"
     implementation 'io.github.http-builder-ng:http-builder-ng-core:1.0.4'
-    implementation 'org.codehaus.groovy:groovy:2.5.13'
-    implementation 'org.codehaus.groovy:groovy-dateutil:2.5.13'
+    implementation 'org.codehaus.groovy:groovy-all:2.5.13'
+    //implementation 'org.codehaus.groovy:groovy-dateutil:2.5.13'
 
 
     runtime "de.abas.homedir:commons-collections:1.0.0"
@@ -86,8 +86,8 @@ dependencies {
     runtime "de.abas.homedir:slf4j-api:1.0.0"
     // custom
     runtime 'io.github.http-builder-ng:http-builder-ng-core:1.0.4'
-    runtime 'org.codehaus.groovy:groovy:2.5.13'
-    runtime 'org.codehaus.groovy:groovy-dateutil:2.5.13'
+    runtime 'org.codehaus.groovy:groovy-all:2.5.13'
+    //runtime 'org.codehaus.groovy:groovy-dateutil:2.5.13'
    
     testImplementation "junit:junit:4.12"
     testImplementation "org.hamcrest:hamcrest-all:1.3"
