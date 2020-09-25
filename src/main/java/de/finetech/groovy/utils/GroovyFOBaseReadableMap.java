@@ -64,6 +64,10 @@ public class GroovyFOBaseReadableMap<T extends BaseReadableBuffer> extends Groov
 		}
 		return null;
 	}
+	
+	public Object propertyMissing(String name) {
+		return this.get(name);
+	}
 
 	public String getType(Object key) {
 		return buffer.getFieldType(key.toString());
