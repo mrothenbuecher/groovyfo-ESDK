@@ -1,3 +1,5 @@
+![Logo](https://github.com/mrothenbuecher/groovyfo-ESDK/blob/master/img/cover.png?raw=true)
+
 Status:**beta** , nicht im produktiv Systemen verwenden!
 
 ESDK App basierend auf [GroovyFO](https://github.com/mrothenbuecher/GroovyFO)
