@@ -6,6 +6,7 @@ import java.io.StringWriter;
 import de.abas.eks.jfop.remote.FOPSessionContext;
 import de.abas.erp.db.DbContext;
 import de.finetech.groovy.utils.GroovyFOScript;
+import groovy.lang.GroovySystem;
 import groovy.transform.CompileStatic;
 import groovyx.net.http.HttpBuilder;
 
@@ -146,7 +147,7 @@ public abstract class AbasBaseScript extends GroovyFOScript {
 		if (ex instanceof Exception) {
 			Exception e = (Exception) ex;
 			e.printStackTrace();
-			println("Unbehandelte Ausnahme in "+this.scriptfile+": \n" + getStacktrace(e));
+			println("Unbehandelte Ausnahme in "+this.scriptfile+"("+GroovySystem.getVersion()+"/"+AbasBaseScript.version+"): \n" + getStacktrace(e));
 		}
 		return null;
 	}

@@ -128,11 +128,11 @@ public class ScriptExecutor implements ContextRunnable {
 
 					} catch (CommandException e) {
 						// FIXME Sprach unabh„ngigkeit
-						FO.fehler("Unbehandelte Ausnahme in " + arg1[1]+"\n"+ getStacktrace(e));
+						FO.fehler("Unbehandelte Ausnahme in " + arg1[1]+"("+GroovySystem.getVersion()+"/"+AbasBaseScript.version+"):\n"+ getStacktrace(e));
 						error = true;
 					} catch (AbortedException e) {
 						// FIXME Sprach unabh„ngigkeit
-						FO.fehler("FOP abgebrochen \nFOP wurde durch Anwender abgebrochen");
+						FO.fehler("FOP("+arg1[1]+") abgebrochen \nFOP wurde durch Anwender abgebrochen");
 						error = true;
 					} catch (CompilationFailedException e) {
 						// FIXME Sprach unabh„ngigkeit
@@ -163,12 +163,12 @@ public class ScriptExecutor implements ContextRunnable {
 					}
 				} else {
 					// FIXME Sprach unabh„ngigkeit
-					FO.fehler("Unzureichende Argumente\nGroovy Script ist keine Datei!");
+					FO.fehler("Unzureichende Argumente\nGroovy Script "+arg1[1]+" ist keine Datei!");
 					return -1;
 				}
 			} else {
 				// FIXME Sprach unabh„ngigkeit
-				FO.fehler("Unzureichende Argumente\nGroovy Script existiert nicht!");
+				FO.fehler("Unzureichende Argumente\nGroovy Script "+arg1[1]+" existiert nicht!");
 				return -1;
 			}
 		} else {
