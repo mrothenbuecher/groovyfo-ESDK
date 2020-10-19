@@ -16,6 +16,8 @@ import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.control.customizers.ImportCustomizer;
 import org.codehaus.groovy.runtime.metaclass.ConcurrentReaderHashMap;
 import org.codehaus.groovy.runtime.metaclass.MetaClassRegistryImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import de.abas.eks.jfop.AbortedException;
 import de.abas.eks.jfop.CommandException;
@@ -39,6 +41,8 @@ import groovy.lang.Script;
  */
 public class ScriptExecutor implements ContextRunnable {
 
+	private static final Logger Log = LoggerFactory.getLogger(ScriptExecutor.class);
+	
 	public static String readFile(String path, Charset encoding) throws IOException {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
 		return new String(encoded, encoding);
@@ -93,7 +97,7 @@ public class ScriptExecutor implements ContextRunnable {
 	public static int executeScript(FOPSessionContext arg0, String[] arg1) {
 		GroovyShell shell = null;
 		boolean error = false;
-
+		
 		EKS.eingabe("DATEI.F");
 		// Genug Parameter „bergben?
 		if (arg1.length > 1) {

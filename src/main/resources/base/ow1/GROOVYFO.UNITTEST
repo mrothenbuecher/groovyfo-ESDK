@@ -72,4 +72,7 @@ u.xa = u.xa + 0.1;
 u.xb = u.xb - 0.1;
 assert u.xa == u.xb
 
+def date = Date.parse("dd.MM.yyyy", "01.01.2020")
+assert date != null
+
 println "Alle Tests erfolgreich bestanden"

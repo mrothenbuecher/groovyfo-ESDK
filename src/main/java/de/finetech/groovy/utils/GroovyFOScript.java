@@ -422,12 +422,12 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 		EKS.editiere(cmd);
 	}
 
-	public void ein(String fopName) {
-		EKS.eingabe(fopName);
+	public int ein(String fopName) {
+		return FO.eingabe(fopName);
 	}
 
-	public void eingabe(String fopName) {
-		EKS.eingabe(fopName);
+	public int eingabe(String fopName) {
+		return FO.eingabe(fopName);
 	}
 
 	public void entfAlleZeilen() {
@@ -1184,12 +1184,12 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 		return this.hole(db, builder.toString());
 	}
 
-	public void in(String fopName) {
-		this.eingabe(fopName);
+	public int in(String fopName) {
+		return this.eingabe(fopName);
 	}
 
-	public void input(String fopName) {
-		this.eingabe(fopName);
+	public int input(String fopName) {
+		return this.eingabe(fopName);
 	}
 
 	public boolean isTrue(String value) {
