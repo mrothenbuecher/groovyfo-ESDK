@@ -33,6 +33,15 @@ einige Vorteile:<br>
 
 Die Klasse `de.finetech.groovy.ScriptExecutor` ist ein JFOP welches als ersten Parameter eine Textdatei (Groovyscript) erwartet. Dieses wird dann auf Basis der Script-Klasse `de.finetech.groovy.AbasBaseScript` initialisiert. Diese Klasse kapselt JFOP-Funktionen um so Schreibarbeit sparen zu können. Weiterhin besteht durch die Verwendung von Groovy die Möglichkeit Kontrollstrukturen wie if-Anweisungen, Schleifen oder eben auch Klassen im Kontext eines FOP zu verwenden. Dadurch das bei jeden Aufruf des ScriptExecuters die Groovy Datei neu interpretiert wird, können Änderungen an dieser Datei ohne erneutes redeployen des JFOP-Server wirksam werden. Dieses Verhalten ist ähnlich dem Verhalten von FOP's.
 
+## Installation
+1. aktuellsten [esdk-installer](https://bintray.com/abas/abas-essentials-sdk/de.abas.esdk) herunterladen und entpacken
+```wget https://bintray.com/abas/abas-essentials-sdk/download_file?file_path=de/abas/esdk/installer/0.12.29/installer-0.12.29.zip -O installer-0.12.29.zip```
+2. [aktuellen Release](https://github.com/mrothenbuecher/groovyfo-ESDK/releases/latest) von groovyfo herunterladen (standaloneapp)
+3. installieren
+```
+./esdk-app-installer-0.12.29/bin/esdk-app-installer -a groovyfo-0.5.5-standalone-app.jar
+```
+
 
 ## Verwendung
 Aufruf eines GroovyFO aus der Kommandoübersicht
