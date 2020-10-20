@@ -35,10 +35,12 @@ Die Klasse `de.finetech.groovy.ScriptExecutor` ist ein JFOP welches als ersten P
 
 ## Installation
 1. aktuellsten [esdk-installer](https://bintray.com/abas/abas-essentials-sdk/de.abas.esdk) herunterladen und entpacken
-```wget https://bintray.com/abas/abas-essentials-sdk/download_file?file_path=de/abas/esdk/installer/0.12.29/installer-0.12.29.zip -O installer-0.12.29.zip```
+```bash
+wget https://bintray.com/abas/abas-essentials-sdk/download_file?file_path=de/abas/esdk/installer/0.12.29/installer-0.12.29.zip -O installer-0.12.29.zip
+```
 2. [aktuellen Release](https://github.com/mrothenbuecher/groovyfo-ESDK/releases/latest) von groovyfo herunterladen (standaloneapp)
 3. installieren
-```
+```bash
 ./esdk-app-installer-0.12.29/bin/esdk-app-installer -a groovyfo-0.5.5-standalone-app.jar
 ```
 
