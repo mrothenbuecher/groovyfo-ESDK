@@ -1,6 +1,11 @@
 /**
 *  ow1/GROOVYFO.UNITTEST
 */
+
+Log.info("cTest");
+Log.debug("cTest 2");
+Log.error("cTest 3");
+
 art("int","xi","xj")
 u.xi = 1
 u.xj = 1

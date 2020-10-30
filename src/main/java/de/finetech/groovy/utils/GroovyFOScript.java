@@ -2,13 +2,15 @@ package de.finetech.groovy.utils;
 
 import java.awt.Color;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import de.abas.eks.jfop.FOPException;
 import de.abas.eks.jfop.remote.EKS;
@@ -32,7 +34,10 @@ import groovy.lang.Script;
 public abstract class GroovyFOScript extends Script implements GroovyObject {
 	
 	protected static DecimalFormat df = new DecimalFormat("0.0000");
-
+	
+	protected Logger Log = LoggerFactory.getLogger(GroovyFOScript.class);
+	protected Logger log = Log;
+	
 	// Temp Variablen um sich die letzten Selektion zu speichern
 	protected String hselection;
 	protected String dselection;
@@ -102,6 +107,11 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 	
 	protected boolean GROOVYFODEBUG = false;
 
+	public GroovyFOScript() {
+		// Log.
+		// Logger.
+	}
+	
 	/**
 	 * .absatz cmd
 	 * 

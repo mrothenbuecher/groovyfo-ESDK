@@ -18,6 +18,7 @@ import org.codehaus.groovy.runtime.metaclass.ConcurrentReaderHashMap;
 import org.codehaus.groovy.runtime.metaclass.MetaClassRegistryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 import de.abas.eks.jfop.AbortedException;
 import de.abas.eks.jfop.CommandException;
@@ -40,8 +41,8 @@ import groovy.lang.Script;
  * 
  */
 public class ScriptExecutor implements ContextRunnable {
-
-	private static final Logger Log = LoggerFactory.getLogger(ScriptExecutor.class);
+	
+	private static Logger Log = LoggerFactory.getLogger(ScriptExecutor.class);
 	
 	public static String readFile(String path, Charset encoding) throws IOException {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
@@ -98,6 +99,10 @@ public class ScriptExecutor implements ContextRunnable {
 		GroovyShell shell = null;
 		boolean error = false;
 		
+		Log.info("Test");
+		Log.debug("Test 2");
+		Log.error("Test 3");
+		
 		EKS.eingabe("DATEI.F");
 		// Genug Parameter „bergben?
 		if (arg1.length > 1) {
@@ -106,6 +111,7 @@ public class ScriptExecutor implements ContextRunnable {
 			if (groovyScript.exists()) {
 				// ist es eine Datei ?
 				if (groovyScript.isFile()) {
+					MDC.put("script", arg1[1]);
 					Object o = null;
 					Script gscript = null;
 					try {
