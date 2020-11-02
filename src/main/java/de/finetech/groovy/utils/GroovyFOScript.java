@@ -108,8 +108,6 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 	protected boolean GROOVYFODEBUG = false;
 
 	public GroovyFOScript() {
-		// Log.
-		// Logger.
 	}
 	
 	/**

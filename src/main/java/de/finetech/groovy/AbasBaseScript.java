@@ -3,6 +3,9 @@ package de.finetech.groovy;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
+import org.codehaus.groovy.runtime.StackTraceUtils;
+import org.slf4j.MDC;
+
 import de.abas.eks.jfop.remote.FOPSessionContext;
 import de.abas.erp.db.DbContext;
 import de.finetech.groovy.utils.GroovyFOScript;
@@ -119,9 +122,11 @@ public abstract class AbasBaseScript extends GroovyFOScript {
 			this.arg0 = (FOPSessionContext) this.getBinding().getVariable("arg0");
 			this.args = (String[]) this.getBinding().getVariable("args");
 			this.scriptfile = (String) this.getBinding().getVariable("scriptfile");
+			MDC.put("SCRIPT", this.scriptfile);
 			this.dbContext = (DbContext) this.getBinding().getVariable("dbContext");
 			o = runCode();
 		} catch (Exception e) {
+			log.error("Error in script :",StackTraceUtils.deepSanitize(e));
 			this.onerror(e);
 		} finally {
 			this.always();

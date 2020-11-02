@@ -14,6 +14,7 @@ import java.util.List;
 import org.codehaus.groovy.control.CompilationFailedException;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.control.customizers.ImportCustomizer;
+import org.codehaus.groovy.runtime.StackTraceUtils;
 import org.codehaus.groovy.runtime.metaclass.ConcurrentReaderHashMap;
 import org.codehaus.groovy.runtime.metaclass.MetaClassRegistryImpl;
 import org.slf4j.Logger;
@@ -42,7 +43,7 @@ import groovy.lang.Script;
  */
 public class ScriptExecutor implements ContextRunnable {
 	
-	private static Logger Log = LoggerFactory.getLogger(ScriptExecutor.class);
+	private static final Logger log = LoggerFactory.getLogger(ScriptExecutor.class);
 	
 	public static String readFile(String path, Charset encoding) throws IOException {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
@@ -99,10 +100,6 @@ public class ScriptExecutor implements ContextRunnable {
 		GroovyShell shell = null;
 		boolean error = false;
 		
-		Log.info("Test");
-		Log.debug("Test 2");
-		Log.error("Test 3");
-		
 		EKS.eingabe("DATEI.F");
 		// Genug Parameter „bergben?
 		if (arg1.length > 1) {
@@ -111,7 +108,7 @@ public class ScriptExecutor implements ContextRunnable {
 			if (groovyScript.exists()) {
 				// ist es eine Datei ?
 				if (groovyScript.isFile()) {
-					MDC.put("script", arg1[1]);
+					MDC.put("SCRIPT", arg1[1]);
 					Object o = null;
 					Script gscript = null;
 					try {
@@ -139,10 +136,12 @@ public class ScriptExecutor implements ContextRunnable {
 					} catch (CommandException e) {
 						// FIXME Sprach unabh„ngigkeit
 						FO.fehler("Unbehandelte Ausnahme in " + arg1[1]+"("+GroovySystem.getVersion()+"/"+AbasBaseScript.version+"):\n"+ getStacktrace(e));
+						log.error("Unbehandelte Ausnahme in " + arg1[1]+"("+GroovySystem.getVersion()+"/"+AbasBaseScript.version+"):\n", StackTraceUtils.deepSanitize(e));
 						error = true;
 					} catch (AbortedException e) {
 						// FIXME Sprach unabh„ngigkeit
 						FO.fehler("FOP("+arg1[1]+") abgebrochen \nFOP wurde durch Anwender abgebrochen");
+						log.error("FOP("+arg1[1]+") abgebrochen \nFOP wurde durch Anwender abgebrochen");
 						error = true;
 					} catch (CompilationFailedException e) {
 						// FIXME Sprach unabh„ngigkeit
@@ -150,6 +149,7 @@ public class ScriptExecutor implements ContextRunnable {
 						// das Script nicht „bersetzen: "
 						// + e.getMessage() + "\n" + getStacktrace(e));
 						FO.fehler("šbersetzung fehlgeschlagen ("+arg1[1]+"):\n"+ getStacktrace(e));
+						log.error("šbersetzung fehlgeschlagen ("+arg1[1]+"):\n", StackTraceUtils.deepSanitize(e));
 						error = true;
 					} catch (Exception e) {
 						// FIXME Sprach unabh„ngigkeit
@@ -174,16 +174,19 @@ public class ScriptExecutor implements ContextRunnable {
 				} else {
 					// FIXME Sprach unabh„ngigkeit
 					FO.fehler("Unzureichende Argumente\nGroovy Script "+arg1[1]+" ist keine Datei!");
+					log.error("Unzureichende Argumente\nGroovy Script "+arg1[1]+" ist keine Datei!");
 					return -1;
 				}
 			} else {
 				// FIXME Sprach unabh„ngigkeit
 				FO.fehler("Unzureichende Argumente\nGroovy Script "+arg1[1]+" existiert nicht!");
+				log.error("Unzureichende Argumente\nGroovy Script "+arg1[1]+" existiert nicht!");
 				return -1;
 			}
 		} else {
 			// FIXME Sprach unabh„ngigkeit
 			FO.fehler("Unzureichende Argumente\nkeine Groovy Script angegeben!");
+			log.error("Unzureichende Argumente\\nkeine Groovy Script angegeben!", arg1);
 			return -1;
 		}
 		return 0;

@@ -57,6 +57,7 @@ esdk {
 group = "de.finetech.groovy"
 
 dependencies {
+    provided "de.abas.homedir:log4j:1.0.0"
     provided "de.abas.homedir:abas-db-base:1.0.0"
     provided "de.abas.homedir:jedp:1.0.0"
     provided "de.abas.homedir:abas-jfop-runtime-api:1.0.0"
@@ -71,9 +72,6 @@ dependencies {
     implementation "de.abas.clientdir:abas-db:1.0.0-SNAPSHOT"
     implementation "de.abas.clientdir:abas-db-infosys:1.0.0-SNAPSHOT"
     implementation "de.abas.clientdir:abas-db-index:1.0.0-SNAPSHOT"
-    implementation "de.abas.homedir:slf4j-api:1.0.0"
-    implementation "de.abas.homedir:slf4j-log4j12:1.0.0"
-    implementation "de.abas.homedir:log4j:1.0.0"
 
     // custom
     implementation "de.abas.homedir:abas-jfop-base:1.0.0"
@@ -89,13 +87,11 @@ dependencies {
     runtime "de.abas.homedir:jcl-over-slf4j:1.0.0"
     runtime "de.abas.homedir:slf4j-api:1.0.0"
     runtime "de.abas.homedir:slf4j-log4j12:1.0.0"
-    runtime "de.abas.homedir:log4j:1.0.0"
     
     // custom
     runtime 'io.github.http-builder-ng:http-builder-ng-core:1.0.4'
     runtime 'org.codehaus.groovy:groovy-all:2.5.13'
     runtime 'org.codehaus.groovy:groovy-dateutil:2.5.13'
-    //runtime 'org.slf4j:slf4j-simple:1.7.21'
    
     testImplementation "junit:junit:4.12"
     testImplementation "org.hamcrest:hamcrest-all:1.3"
