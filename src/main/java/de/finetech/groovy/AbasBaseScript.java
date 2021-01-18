@@ -24,7 +24,7 @@ import groovyx.net.http.HttpBuilder;
 @CompileStatic
 public abstract class AbasBaseScript extends GroovyFOScript {
 
-	public final static String version = "0.5.5";
+	public final static String version = "0.5.6";
 	
 	/**
 	 * die interne standard Sprache des groovyFO ist Deutsch
