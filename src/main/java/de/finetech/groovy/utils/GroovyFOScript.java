@@ -863,11 +863,11 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 	public void println(String cmd) {
 		cmd = cmd.replaceAll("\"", "'DBLQUOTE'");
 		// String kürzen
-		if (cmd.length() > 2998) {
-			while(cmd.length() > 2998) {
-			  String foo  = cmd.substring(0, 2998);
+		if (cmd.length() > 2900) {
+			while(cmd.length() > 2900) {
+			  String foo  = cmd.substring(0, 2900);
 			  EKS.println("-lfsuppress "+foo);
-			  cmd = cmd.substring(2998, cmd.length());
+			  cmd = cmd.substring(2900, cmd.length());
 			}
 		    EKS.println(cmd);
 		}
