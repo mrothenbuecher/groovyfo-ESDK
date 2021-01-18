@@ -844,7 +844,7 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 
 	@Override
 	public void println(Object cmd) {
-		EKS.println(cmd != null ? cmd.toString() : "null");
+		this.println(cmd != null ? cmd.toString() : "null");
 	}
 
 	/**
@@ -855,7 +855,7 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 	public void println(Object... cmd) {
 		for (Object o : cmd) {
 			String s = o != null ? o.toString() : "null";
-			EKS.println("-lfsuppress " + s);
+			this.println(s);
 		}
 		EKS.println("");
 	}
@@ -866,7 +866,7 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 		if (cmd.length() > 2998) {
 			while(cmd.length() > 2998) {
 			  String foo  = cmd.substring(0, 2998);
-			  EKS.println(foo);
+			  EKS.println("-lfsuppress "+foo);
 			  cmd = cmd.substring(2998, cmd.length());
 			}
 		    EKS.println(cmd);
