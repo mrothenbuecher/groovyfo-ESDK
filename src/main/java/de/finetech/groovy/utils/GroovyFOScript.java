@@ -524,7 +524,7 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 	public void flattersatz() {
 		EKS.flattersatz("");
 	}
-
+	
 	public Object fo(String var, AbasDate value) throws FOPException, GroovyFOException {
 		EKS.formel(var + "=\"" + value.toString() + "\"");
 		return value;
@@ -863,8 +863,14 @@ public abstract class GroovyFOScript extends Script implements GroovyObject {
 	public void println(String cmd) {
 		cmd = cmd.replaceAll("\"", "'DBLQUOTE'");
 		// String kürzen
-		if (cmd.length() > 2999)
-			EKS.println(cmd.substring(0, 2999));
+		if (cmd.length() > 2998) {
+			while(cmd.length() > 2998) {
+			  String foo  = cmd.substring(0, 2998);
+			  EKS.println(foo);
+			  cmd = cmd.substring(2998, cmd.length());
+			}
+		    EKS.println(cmd);
+		}
 		else
 			EKS.println(cmd);
 	}
